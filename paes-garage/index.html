@@ -1,157 +1,449 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paes Garage</title>
-    <link rel="shortcut icon" href="./images/icone.jpg" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paes Garage — Oficina, projetos e paixão por carros</title>
+    <meta name="description"
+        content="Paes Garage: restauração, manutenção e projetos automotivos com a pista de Interlagos como pano de fundo." />
+    <link rel="icon" href="./images/icone.jpg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="./styles/style.css" />
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="./scripts/script.js" defer></script>
-    <link rel="stylesheet" href="./styles/style.css">
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-
-        .header {
-            background-color: #4b4b4b;
-            color: #d4d4d4;
-            display: flex;
-            justify-content: space-between;
-            height: 4vw;
-            align-items: center;
-            padding: 2rem;
-        }
-
-        .title-header {
-            color: #ffffff;
-        }
-
-        .link-header {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 0.5rem;
-        }
-
-        .video-scroll-section {
-            height: 350vh;
-            /* quanto maior, mais "devagar" o vídeo avança por scroll */
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .video-scroll-section video {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
-        }
-
-        .about-me {
-            position: relative;
-            width: 50%;
-            padding: 3rem;
-        }
-
-        .projects {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .card-project {
-            width: 33%;
-            display: flex;
-            padding: 3rem;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-title {
-            letter-spacing: .167em;
-        }
-
-        .img-card {
-            width: 40%;
-        }
-    </style>
 </head>
 
 <body>
-    <header class="header">
-        <div class="title-header">
-            <h1>Paes Garage</h1>
+    <!-- =========================================================
+       BACKGROUND FIXO — vídeo do circuito + mapa-assinatura
+       Fica atrás de tudo (z-index 0); as seções rolam por cima.
+       ========================================================= -->
+    <div class="circuit-bg" aria-hidden="true">
+        <video id="scrollVideo" class="circuit-bg__video" src="./animation/interlagos-animation.mp4" muted playsinline
+            preload="auto"></video>
+        <div class="circuit-bg__vignette"></div>
+        <div class="circuit-bg__scrim"></div>
+
+        <div class="track-hud">
+            <span class="track-hud__label">Interlagos · traçado</span>
+            <svg viewBox="0 0 220 150">
+                <path class="track-path"
+                    d="M20 100 C20 60 55 40 90 45 C115 48 108 75 85 78 C65 80 55 65 68 55 C90 38 140 30 175 42 C200 50 205 75 190 95 C178 110 155 118 130 112 C100 105 60 130 35 122 C22 118 15 110 20 100 Z" />
+                <path class="track-path-progress"
+                    d="M20 100 C20 60 55 40 90 45 C115 48 108 75 85 78 C65 80 55 65 68 55 C90 38 140 30 175 42 C200 50 205 75 190 95 C178 110 155 118 130 112 C100 105 60 130 35 122 C22 118 15 110 20 100 Z" />
+                <circle class="track-dot" r="5" />
+            </svg>
         </div>
-        <nav>
-            <a href="#about-me" class="link-header">Quem somos?</a>
-            <a href="" class="link-header">Meus Projetos</a>
-            <a href="" class="link-header">Anúncios</a>
-            <a href="" class="link-header">Contatos</a>
-        </nav>
-        <div>
-            <a href="" class="link-header">Grupo de Ofertas</a>
+    </div>
+
+    <div class="site-content">
+        <!-- =========================================================
+         HEADER HÍBRIDO
+         ========================================================= -->
+        <header class="header">
+            <div class="header__inner">
+                <a href="#" class="header__brand" aria-label="Paes Garage — início">
+                    <img style="width: 1em;" src="./images/icone.jpg" alt="">
+                    Paes Garage
+                </a>
+
+                <button class="header__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <nav class="header__nav" id="siteNav" aria-label="Navegação principal">
+                    <a href="#about-me" class="header__link">Quem somos?</a>
+                    <a href="#projetos" class="header__link">Meus Projetos</a>
+                    <a href="#anuncios" class="header__link">Anúncios</a>
+                    <a href="#contatos" class="header__link">Contatos</a>
+                </nav>
+
+                <a href="#contatos" class="header__cta">Grupo de Ofertas</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- =========================================================
+           HERO
+           ========================================================= -->
+            <section class="hero">
+                <div class="hero__stage">
+                    <span class="eyebrow hero__eyebrow">Autódromo José Carlos Pace · Interlagos</span>
+                    <h1 class="hero__title">Paixão em<span>cada curva</span></h1>
+                    <p class="hero__subtitle">
+                        Uma garagem dedicada a preservar, restaurar e dar alma a carros que merecem ser dirigidos com
+                        respeito.
+                    </p>
+                    <div class="hero__scrollcue"><span class="hero__scrollcue-line"></span>Role para acelerar</div>
+                </div>
+            </section>
+
+            <!-- =========================================================
+           QUEM SOMOS
+           ========================================================= -->
+            <section class="about" id="about-me">
+                <div class="container about__panel glass-panel reveal">
+                    <div class="about__carousel" data-carousel>
+                        <div class="about__slide is-active">
+                            <img src="./images/sobre/rafa-paes.jpg" alt="Rafael Paes o intusiasta" loading="lazy" />
+                        </div>
+                        <div class="about__slide">
+                            <img src="./images/sobre/mecanic-corsa.jpg" alt="Dicas que ajudam em cada projeto"
+                                loading="lazy" />
+                        </div>
+                        <div class="about__slide">
+                            <img src="./images/sobre/anuncios.jpg" alt="anuncios que correm aqui" loading="lazy" />
+                        </div>
+                        <div class="about__dots">
+                            <button class="about__dot is-active" aria-label="Ver foto 1"></button>
+                            <button class="about__dot" aria-label="Ver foto 2"></button>
+                            <button class="about__dot" aria-label="Ver foto 3"></button>
+                        </div>
+                    </div>
+
+                    <div class="about__text">
+                        <h2>Paes Garage</h2>
+                        <p>
+                            Muito mais do que uma página de carros, a Paes Garage é a concretização da paixão de uma
+                            vida inteira.
+                            À frente de cada projeto está o Rafa, o fundador e o coração da garagem. Desde sempre
+                            fascinado pelo
+                            universo automotivo, Rafa transformou sua curiosidade técnica e amor por carros em um espaço
+                            onde a
+                            mecânica é tratada com diversão, precisão e arte.
+                        </p>
+                        <p>
+                            Para ele, cada carro que entra na Paes Garage não é apenas um projeto, mas um sonho que
+                            merece atenção
+                            aos mínimos detalhes. Seja buscando a melhor performance, revivendo um ícone ou apenas
+                            curtindo seus
+                            aspectos, aqui transmitimos nosso amor pelos carros em cada detalhe de nossos projetos.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================================================
+           MEUS PROJETOS — configurador
+           ========================================================= -->
+            <section class="projects" id="projetos">
+                <div class="container">
+                    <div class="projects__head reveal">
+                        <span class="eyebrow">Configurador de projetos</span>
+                        <h2>Meus Projetos</h2>
+                    </div>
+
+                    <div class="configurator">
+                        <div class="configurator__viewport">
+                            <div class="configurator__track">
+                                <div class="car-slide is-active">
+                                    <div class="car-slide__card">
+                                        <div class="car-slide__media">
+                                            <img src="./images/capas/corsa.png" alt="GM Corsa 1.0" loading="lazy" />
+                                        </div>
+                                        <div class="car-slide__body">
+                                            <div>
+                                                <div class="car-slide__name">GM Corsa 1.0</div>
+                                                <div class="car-slide__specs">
+                                                    <span class="spec-chip">1.0 8V</span>
+                                                    <span class="spec-chip">Manual</span>
+                                                    <span class="spec-chip">2003</span>
+                                                </div>
+                                            </div>
+                                            <button class="btn-primary" data-open-project="corsa">
+                                                Ver Projeto
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    aria-hidden="true">
+                                                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="car-slide">
+                                    <div class="car-slide__card">
+                                        <div class="car-slide__media">
+                                            <img src="./images/capas/peugeot-307-preto.png" alt="Peugeot 307"
+                                                loading="lazy" />
+                                        </div>
+                                        <div class="car-slide__body">
+                                            <div>
+                                                <div class="car-slide__name">Peugeot 307</div>
+                                                <div class="car-slide__specs">
+                                                    <span class="spec-chip">2.0 16V</span>
+                                                    <span class="spec-chip">MAnual</span>
+                                                    <span class="spec-chip">2008</span>
+                                                </div>
+                                            </div>
+                                            <button class="btn-primary" data-open-project="peugeot-307">
+                                                Ver Projeto
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    aria-hidden="true">
+                                                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="car-slide">
+                                    <div class="car-slide__card">
+                                        <div class="car-slide__media">
+                                            <img src="./images/capas/clio-01-16v.png"
+                                                alt="Renault Clio 1.6 Privilége 16v" loading="lazy" />
+                                        </div>
+                                        <div class="car-slide__body">
+                                            <div>
+                                                <div class="car-slide__name">Renault Clio 1.6 Privilége 16v</div>
+                                                <div class="car-slide__specs">
+                                                    <span class="spec-chip">1.6 16V</span>
+                                                    <span class="spec-chip">Manual</span>
+                                                    <span class="spec-chip">2011</span>
+                                                </div>
+                                            </div>
+                                            <button class="btn-primary" data-open-project="clio">
+                                                Ver Projeto
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    aria-hidden="true">
+                                                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="configurator__controls">
+                            <button class="configurator__arrow" data-configurator="prev" aria-label="Projeto anterior">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="configurator__dashes"></div>
+                            <button class="configurator__arrow" data-configurator="next" aria-label="Próximo projeto">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================================================
+           ANÚNCIOS
+           ========================================================= -->
+            <section class="ads" id="anuncios">
+                <div class="container">
+                    <div class="ads__head reveal">
+                        <span class="eyebrow">Carros e Oportunidades</span>
+                        <h2>Anúncios</h2>
+                    </div>
+
+                    <div class="ads__grid">
+                        <article class="ad-card reveal">
+                            <div class="ad-card__media">
+                                <img src="./images/anuncios/ds3-venda.jpg" alt="Citroën DS3 THP" loading="lazy" />
+                            </div>
+                            <span class="ad-card__tag">Carro disponível</span>
+                            <div class="ad-card__body">
+                                <h3 class="ad-card__title">Citroën DS3 THP</h3>
+                                <div class="ad-card__price">Consulte valores</div>
+                                <p class="ad-card__desc">DS3 extremamente bem cuidado, com preparação feita visando
+                                    performance e confiabilidade, além de acabamento impecável e diversos upgrades de
+                                    qualidade.</p>
+                                <div class="ad-card__footer">
+                                    <span class="spec-chip">R$ 87.000</span>
+                                    <button class="link-ghost" data-open-ad="rodas-aro-16">Ver detalhes</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="ad-card reveal">
+                            <div class="ad-card__media">
+                                <img src="./images/anuncios/ip-tsi-branco.jpg" alt="UP! TSI MOVE STAGE 3"
+                                    loading="lazy" />
+                            </div>
+                            <span class="ad-card__tag">Carro disponível</span>
+                            <div class="ad-card__body">
+                                <h3 class="ad-card__title">UP! TSI MOVE STAGE 3 </h3>
+                                <div class="ad-card__price">Consulte valores</div>
+                                <p class="ad-card__desc">Up! TSI Stage 3, bem montado, com manutenção rigorosa e pronto
+                                    pra uso. Carro forte e confiável.
+
+
+                                </p>
+                                <div class="ad-card__footer">
+                                    <span class="spec-chip">R$ 51.000</span>
+                                    <button class="link-ghost" data-open-ad="kit-suspensao">Ver detalhes</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="ad-card reveal">
+                            <div class="ad-card__media">
+                                <img src="./images/anuncios/ds3-amarelo-venda.jpg" alt="DS3 1.6 TURBO" loading="lazy" />
+                            </div>
+                            <span class="ad-card__tag">Carro disponível</span>
+                            <div class="ad-card__body">
+                                <h3 class="ad-card__title">DS3 1.6 THP</h3>
+                                <div class="ad-card__price">Consulte valores</div>
+                                <p class="ad-card__desc">DS3 100% original, extremamente conservado, com procedência
+                                    garantida, pintura original sem retoques e mecânica em ótimo estado.
+
+                                </p>
+                                <div class="ad-card__footer">
+                                    <span class="spec-chip">R$55.000</span>
+                                    <button class="link-ghost" data-open-ad="escapamento-esportivo">Ver
+                                        detalhes</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================================================
+           CONTATOS
+           ========================================================= -->
+            <section class="contact" id="contatos">
+                <div class="container">
+                    <div class="contact__panel glass-panel reveal">
+                        <h2>Fala com a gente</h2>
+                        <p>Dúvidas, orçamentos ou só bater um papo sobre carros — escolha o canal que preferir.</p>
+                        <div class="contact__links">
+                            <a class="contact__link" href="https://www.instagram.com/paesgarage/" target="_blank"
+                                rel="noopener">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor"
+                                        stroke-width="1.6" />
+                                    <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6" />
+                                    <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" />
+                                </svg>
+                                Instagram
+                            </a>
+                            <a class="contact__link"
+                                href="https://api.whatsapp.com/send?phone=5511997145234&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+como+anunciar+meu+carro&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxd1yEgrj-O_OWa1xydAeVepAXfWAUnK8oljBgI_8-cHyd5sePBGWlsHcUsg_aem_NPfN_SiFXwIYnFDE3zbUTA"
+                                target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M12 3a8.5 8.5 0 00-7.4 12.7L3 21l5.5-1.5A8.5 8.5 0 1012 3z"
+                                        stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                                    <path
+                                        d="M9 9.8c0 3.2 2.4 5.4 5.4 5.4.8 0 1-.5.9-1.1l-.2-.9c-.1-.5-.6-.7-1-.5l-.7.3c-.6.3-1-.1-1.7-.8-.7-.7-1.1-1.1-.8-1.7l.3-.7c.2-.4 0-.9-.5-1l-.9-.2c-.6-.1-1.1.1-1.1.9z"
+                                        fill="currentColor" />
+                                </svg>
+                                Grupo do WhatsApp
+                            </a>
+                            <a class="contact__link" href="https://www.youtube.com/watch?v=ZKr8j4udywQ" target="_blank"
+                                rel="noopener">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <rect x="2.5" y="6" width="19" height="12" rx="3.5" stroke="currentColor"
+                                        stroke-width="1.6" />
+                                    <path d="M10.5 9.5l5 2.5-5 2.5v-5z" fill="currentColor" />
+                                </svg>
+                                YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer__grid">
+                    <div>
+                        <div class="footer__brand">Paes Garage</div>
+                        <p class="footer__mission">
+                            Um espaço para quem trata carro com respeito: manutenção, restauro e projetos pensados para
+                            durar,
+                            feitos por quem vive de paixão automotiva.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="footer__heading">Projetos</div>
+                        <ul class="footer__list">
+                            <li>GM Corsa 1.0</li>
+                            <li>Peugeot 307</li>
+                            <li>Renault Clio 1.6 16v</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="footer__heading">Contato</div>
+                        <ul class="footer__list">
+                            <li><a href="#anuncios">Anúncios</a></li>
+                            <li><a href="#contatos">Grupo de Ofertas</a></li>
+                            <li><a href="#contatos">Instagram &amp; YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <span>Paes Garage — Oficina &amp; Projetos</span>
+                    <span>© 2026 Desenvolvido por Heron. Todos os direitos reservados a Rafael Paes e Paes
+                        Garage.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- =========================================================
+       MODAL "WIKI" — reutilizado por projetos e anúncios
+       ========================================================= -->
+    <div class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal__backdrop"></div>
+        <div class="modal__dialog">
+            <button class="modal__close" aria-label="Fechar">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <div class="modal__gallery"><img src="" alt="" /></div>
+            <div class="modal__thumbs"></div>
+
+            <div class="modal__content">
+                <span class="eyebrow modal__eyebrow"></span>
+                <h3 class="modal__title" id="modalTitle"></h3>
+                <p class="modal__tagline"></p>
+
+                <div class="modal__tabs">
+                    <button class="modal__tab is-active" data-tab="overview">Visão Geral</button>
+                    <button class="modal__tab" data-tab="specs">Especificações</button>
+                </div>
+
+                <div class="modal__panel is-active" data-panel="overview">
+                    <p></p>
+                </div>
+                <div class="modal__panel" data-panel="specs">
+                    <dl class="modal__specs"></dl>
+                </div>
+            </div>
         </div>
-    </header>
-    <main>
-        <section class="video-scroll-section">
-            <video id="scrollVideo" src="./animation/interlagos-animation.mp4" muted playsinline preload="auto"></video>
-        </section>
-        <section class="about-me" id="about-me">
-            <h2>Paes Garage</h2>
-            <p> Muito mais do que uma página de carros, a Paes Garage é a concretização da paixão de uma vida inteira. À
-                frente de
-                cada projeto está o Rafa, o fundador e o coração da garagem. Desde sempre fascinado pelo universo
-                automotivo. Rafa transformou sua curiosidade técnica e amor por carros em um espaço onde a mecânica é
-                tratada com respeito, precisão e arte.
+    </div>
 
-                Para ele, cada carro que entra na Paes Garage não é apenas um projeto, mas um sonho que merece atenção
-                aos mínimos detalhes. Seja buscando a melhor performance, revivendo um icone ou apenas curtindo seus
-                aspectos. Aqui transmitimos nosso amor pelos carros em cada detalhe de nossos projetos.</p>
-        </section>
-        <section class="projects">
-            <div class="card-project">
-                <h4 class="card-title">GM Corsa 1.0</h4>
-                <img class="img-card" src="./images/capas/corsa.png" alt="Chevrolet Corsa 1.0">
-            </div>
-            <div class="card-project">
-                <h4 class="card-title">Peugeot 307</h4>
-                <img class="img-card" src="./images/capas/peugeot-307-preto.png" alt="Chevrolet Corsa 1.0">
-            </div>
-            <div class="card-project">
-                <h4 class="card-title">Renault Clio 1.6 Privilége 16v</h4>
-                <img class="img-card" src="./images/capas/clio-01-16v.png" alt="Chevrolet Corsa 1.0">
-            </div>
-        </section>
-    </main>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        const video = document.getElementById('scrollVideo');
-
-        function initScrollVideo() {
-            gsap.to(video, {
-                currentTime: video.duration || 0, // vai de 0 até o fim do vídeo
-                ease: 'none',                // ESSENCIAL: sem easing, senão dessincroniza do scroll
-                scrollTrigger: {
-                    trigger: '.video-scroll-section',
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: 0.5, // "cola" no scroll, com 0.5s de suavização
-                }
-            });
-        }
-        if (video.readyState >= 1) {
-            initScrollVideo();
-        } else {
-            video.addEventListener(`loadedmetadata`, initScrollVideo);
-        }
-    </script>
+    <script src="./scripts/script.js" defer></script>
 </body>
 
 </html>
