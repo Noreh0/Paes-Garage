@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paes Garage</title>
+    <link rel="shortcut icon" href="./images/icone.jpg" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./scripts/script.js" defer></script>
+    <link rel="stylesheet" href="./styles/style.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .header {
+            background-color: #4b4b4b;
+            color: #d4d4d4;
+            display: flex;
+            justify-content: space-between;
+            height: 4vw;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .title-header {
+            color: #ffffff;
+        }
+
+        .link-header {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 0.5rem;
+        }
+
+        .video-scroll-section {
+            height: 350vh;
+            /* quanto maior, mais "devagar" o vídeo avança por scroll */
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-scroll-section video {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        .about-me {
+            position: relative;
+            width: 50%;
+            padding: 3rem;
+        }
+
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card-project {
+            width: 33%;
+            display: flex;
+            padding: 3rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            letter-spacing: .167em;
+        }
+
+        .img-card {
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="title-header">
+            <h1>Paes Garage</h1>
+        </div>
+        <nav>
+            <a href="#about-me" class="link-header">Quem somos?</a>
+            <a href="" class="link-header">Meus Projetos</a>
+            <a href="" class="link-header">Anúncios</a>
+            <a href="" class="link-header">Contatos</a>
+        </nav>
+        <div>
+            <a href="" class="link-header">Grupo de Ofertas</a>
+        </div>
+    </header>
+    <main>
+        <section class="video-scroll-section">
+            <video id="scrollVideo" src="./animation/interlagos-animation.mp4" muted playsinline preload="auto"></video>
+        </section>
+        <section class="about-me" id="about-me">
+            <h2>Paes Garage</h2>
+            <p> Muito mais do que uma página de carros, a Paes Garage é a concretização da paixão de uma vida inteira. À
+                frente de
+                cada projeto está o Rafa, o fundador e o coração da garagem. Desde sempre fascinado pelo universo
+                automotivo. Rafa transformou sua curiosidade técnica e amor por carros em um espaço onde a mecânica é
+                tratada com respeito, precisão e arte.
+
+                Para ele, cada carro que entra na Paes Garage não é apenas um projeto, mas um sonho que merece atenção
+                aos mínimos detalhes. Seja buscando a melhor performance, revivendo um icone ou apenas curtindo seus
+                aspectos. Aqui transmitimos nosso amor pelos carros em cada detalhe de nossos projetos.</p>
+        </section>
+        <section class="projects">
+            <div class="card-project">
+                <h4 class="card-title">GM Corsa 1.0</h4>
+                <img class="img-card" src="./images/capas/corsa.png" alt="Chevrolet Corsa 1.0">
+            </div>
+            <div class="card-project">
+                <h4 class="card-title">Peugeot 307</h4>
+                <img class="img-card" src="./images/capas/peugeot-307-preto.png" alt="Chevrolet Corsa 1.0">
+            </div>
+            <div class="card-project">
+                <h4 class="card-title">Renault Clio 1.6 Privilége 16v</h4>
+                <img class="img-card" src="./images/capas/clio-01-16v.png" alt="Chevrolet Corsa 1.0">
+            </div>
+        </section>
+    </main>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const video = document.getElementById('scrollVideo');
+
+        function initScrollVideo() {
+            gsap.to(video, {
+                currentTime: video.duration || 0, // vai de 0 até o fim do vídeo
+                ease: 'none',                // ESSENCIAL: sem easing, senão dessincroniza do scroll
+                scrollTrigger: {
+                    trigger: '.video-scroll-section',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 0.5, // "cola" no scroll, com 0.5s de suavização
+                }
+            });
+        }
+        if (video.readyState >= 1) {
+            initScrollVideo();
+        } else {
+            video.addEventListener(`loadedmetadata`, initScrollVideo);
+        }
+    </script>
+</body>
+
+</html>
