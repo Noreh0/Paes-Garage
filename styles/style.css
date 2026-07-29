@@ -1100,7 +1100,7 @@ ul {
 }
 
 .modal__gallery {
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 14 / 8;
     background: var(--asphalt-800);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     overflow: hidden;
