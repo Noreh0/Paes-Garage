@@ -28,7 +28,7 @@
        Fica atrás de tudo (z-index 0); as seções rolam por cima.
        ========================================================= -->
     <div class="circuit-bg" aria-hidden="true">
-        <video id="scrollVideo" class="circuit-bg__video" src="./animation/interlagos-animation.mp4" muted playsinline
+        <video id="scrollVideo" class="circuit-bg__video" src="./animation/Interlagos.mp4" muted playsinline
             preload="auto"></video>
         <div class="circuit-bg__vignette"></div>
         <div class="circuit-bg__scrim"></div>
@@ -145,7 +145,7 @@
                     <div class="configurator">
                         <div class="configurator__viewport">
                             <div class="configurator__track">
-                                <div class="car-slide is-active">
+                                <div class="car-slide is-active" id="corsa-card">
                                     <div class="car-slide__card">
                                         <div class="car-slide__media">
                                             <img src="./images/capas/corsa.png" alt="GM Corsa 1.0" loading="lazy" />
@@ -172,7 +172,7 @@
                                     </div>
                                 </div>
 
-                                <div class="car-slide">
+                                <div class="car-slide" id="peugeot-307-card">
                                     <div class="car-slide__card">
                                         <div class="car-slide__media">
                                             <img src="./images/capas/peugeot-307-preto.png" alt="Peugeot 307"
@@ -200,7 +200,7 @@
                                     </div>
                                 </div>
 
-                                <div class="car-slide">
+                                <div class="car-slide" id="clio-verde-card">
                                     <div class="car-slide__card">
                                         <div class="car-slide__media">
                                             <img src="./images/capas/clio-01-16v.png"
@@ -216,6 +216,33 @@
                                                 </div>
                                             </div>
                                             <button class="btn-primary" data-open-project="clio">
+                                                Ver Projeto
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    aria-hidden="true">
+                                                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="car-slide" id="gol-branco-turbo-card">
+                                    <div class="car-slide__card">
+                                        <div class="car-slide__media">
+                                            <img src="./images/capas/gol-turbo-branco.png" alt="gol-branco-turbo"
+                                                loading="lazy" />
+                                        </div>
+                                        <div class="car-slide__body">
+                                            <div>
+                                                <div class="car-slide__name">Volkwagem Gol Turbo</div>
+                                                <div class="car-slide__specs">
+                                                    <span class="spec-chip">1.8 8v</span>
+                                                    <span class="spec-chip">Manual</span>
+                                                    <span class="spec-chip">2005</span>
+                                                </div>
+                                            </div>
+                                            <button class="btn-primary" data-open-project="gol-branco-turbo">
                                                 Ver Projeto
                                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                                                     aria-hidden="true">
@@ -273,7 +300,7 @@
                                     qualidade.</p>
                                 <div class="ad-card__footer">
                                     <span class="spec-chip">R$ 87.000</span>
-                                    <button class="link-ghost" data-open-ad="rodas-aro-16">Ver detalhes</button>
+                                    <button class="link-ghost" data-open-ad="Citroen-DS3-THP">Ver detalhes</button>
                                 </div>
                             </div>
                         </article>
@@ -385,9 +412,10 @@
                     <div>
                         <div class="footer__heading">Projetos</div>
                         <ul class="footer__list">
-                            <li>GM Corsa 1.0</li>
-                            <li>Peugeot 307</li>
-                            <li>Renault Clio 1.6 16v</li>
+                            <li><a href="#corsa-card">GM Corsa 1.0</a></li>
+                            <li><a href="#peugeot-307-card">Peugeot 307</a></li>
+                            <li><a href="#clio-verde-card">Renault Clio 1.6 16v</a></li>
+                            <li><a href="#gol-branco-turbo-card">Gol Turbo</a></li>
                         </ul>
                     </div>
                     <div>

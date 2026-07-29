@@ -21,66 +21,96 @@
             id: "corsa",
             name: "GM Corsa 1.0",
             tagline: "Compacto de rua, retrabalhado para o dia a dia com carinho de garagem.",
-            cover: "./images/capas/corsa.svg",
-            gallery: ["./images/capas/corsa.svg", "./images/galeria/corsa-lateral.svg", "./images/galeria/corsa-interior.svg"],
+            cover: "./images/capas/corsa.png",
+            gallery: ["./images/carros/corsa-paes.jpg", "./images/carros/corsa-3.png"],
             specs: [
                 { label: "Motor", value: "1.0 8V" },
-                { label: "Câmbio", value: "Manual 5v" },
+                { label: "Câmbio", value: "Manual" },
                 { label: "Ano", value: "2003" },
-                { label: "Status", value: "Em restauro" },
+                { label: "Status", value: "Projeto em preparação Turbo" },
             ],
             description:
-                "Projeto de manutenção contínua focado em confiabilidade mecânica e acabamento de detalhes. Suspensão revisada, motor com manutenção preventiva em dia e cuidado estético ponto a ponto — sem perder a essência de carro de uso diário.",
+                "Projeto dailycar contínua focado em confiabilidade mecânica e acabamento de detalhes, agora conta com uma turbina. Colocamos a turbina dele em casa com o passo a passo no nosso perfil do insta, mas, mesmo assim, sem perder a essência do nosso primeiro carro e projeto.",
         },
         {
             id: "peugeot-307",
             name: "Peugeot 307",
             tagline: "Conforto de rodovia com uma pitada de personalidade europeia.",
-            cover: "./images/capas/peugeot-307-preto.svg",
+            cover: "./images/capas/peugeot-307-preto.png",
             gallery: [
-                "./images/capas/peugeot-307-preto.svg",
-                "./images/galeria/peugeot-lateral.svg",
-                "./images/galeria/peugeot-interior.svg",
+                "./images/carros/peugeot_307-preto.jpg",
             ],
             specs: [
                 { label: "Motor", value: "2.0 16V" },
-                { label: "Câmbio", value: "Automático" },
+                { label: "Câmbio", value: "Manual" },
                 { label: "Ano", value: "2008" },
-                { label: "Status", value: "Rodando" },
+                { label: "Status", value: "Esse já foi" },
             ],
             description:
-                "Um clássico francês mantido com atenção total à parte elétrica e à suspensão — pontos sensíveis do modelo. O objetivo aqui é preservar o conforto de origem entregando uma condução suave e sem sustos.",
+                "Um clássico francês mantido com atenção total — o primeiro Frânces que tivemos por aqui. O objetivo aqui era curtir o conforto de origem entregando uma condução suave, mas também feita para o trackday.",
         },
         {
             id: "clio",
             name: "Renault Clio 1.6 Privilége 16v",
             tagline: "Hatch ágil, motor 16 válvulas revisado para render sorriso em toda troca de marcha.",
-            cover: "./images/capas/clio-01-16v.svg",
-            gallery: ["./images/capas/clio-01-16v.svg", "./images/galeria/clio-lateral.svg", "./images/galeria/clio-interior.svg"],
+            cover: "./images/capas/clio-01-16v.png",
+            gallery: ["./images/carros/clio-4p-azul.jpg",
+            ],
             specs: [
                 { label: "Motor", value: "1.6 16V" },
-                { label: "Câmbio", value: "Manual 5v" },
+                { label: "Câmbio", value: "Manual" },
                 { label: "Ano", value: "2011" },
-                { label: "Status", value: "Finalizado" },
+                { label: "Status", value: "Esse já foi" },
             ],
             description:
-                "Projeto voltado a performance de baixo custo: geometria de suspensão ajustada, motor 16v com manutenção completa e escapamento revisado para liberar a resposta característica do motor.",
+                "Projeto voltado a performance de baixo custo: suspensão preparada, motor 16v e escapamento esportivo para liberar o som característico do motor.",
+        },
+        {
+            id: "gol-branco-turbo",
+            name: "Volkwagem Gol 1.8 Turbo",
+            tagline: "Hatch com bom desempenho. Força em retomadas e robustez mecânica, agora com uma surpresinha que pode enganar despercebidos.",
+            cover: "./images/capas/gol-turbo-branco.png",
+            gallery: ["./images/carros/gol-branco/gol-branco-turbo.jpg",
+                "./images/carros/gol-branco/gol-branco-turbo-frente.jpg",
+                "./images/carros/gol-branco/gol-branco-turbo-lateral.jpg",
+                "./images/carros/gol-branco/gol-branco-turbo-traseira.jpg",
+                "./images/carros/gol-branco/gol-branco-turbo-traseira-rodas.jpg",
+            ],
+            specs: [
+                { label: "Motor", value: "1.8 8V" },
+                { label: "Câmbio", value: "Manual" },
+                { label: "Ano", value: "2005" },
+                { label: "Status", value: "Esse já foi" },
+            ],
+            description:
+                "Projeto turbo baixo custo: suspensão preparada, motor 8v e escapamento em inox, além de ter passado por alguns conjuntos de rodas iconicos.",
         },
     ];
 
     const ADS = [
         {
-            id: "rodas-aro-16",
-            title: "Jogo de rodas aro 16",
-            tag: "Peça disponível",
+            id: "Citroen-DS3-THP",
+            title: "Citroën DS3 THP",
+            tag: "Carro disponível",
             price: "Consulte valores",
-            cover: "./images/anuncios/rodas.svg",
-            gallery: ["./images/anuncios/rodas.svg"],
-            description: "Jogo de rodas aro 16 em bom estado de uso, pintura recente e sem amassados.",
+            cover: "./images/anuncios/ds3-venda.jpg",
+            gallery: ["./images/anuncios/ds3-branco/ds3-venda-frente.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-lateral-esquerda.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-lateral-direita.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-traseira.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-lanterna.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-roda.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-motor.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-interior.jpg",
+                "./images/anuncios/ds3-branco/ds3-venda-volante.jpg"],
+            description: "DS3 extremamente bem cuidado, com preparação feita visando performance e confiabilidade, além de acabamento impecável e diversos upgrades de qualidade.",
             specs: [
-                { label: "Aro", value: "16”" },
-                { label: "Furação", value: "4x100" },
-                { label: "Estado", value: "Usado" },
+                { label: "Motor", value: "THP 1.6 forjado pela AceleraCar" },
+                { label: "Pistões", value: "Pro Forge + Bielas Supertech" },
+                { label: "Turbina", value: "Bull Racing 44/46" },
+                { label: "Intake", value: "Bull Racing + filtro K&N" },
+                { label: "Válvula de Alivio", value: "Forge" },
+                { label: "Mapa", value: "Pixel" },
             ],
         },
         {
@@ -359,6 +389,10 @@
         let startTranslate = 0;
 
         viewport.addEventListener("pointerdown", (e) => {
+            // Se o clique foi em um botão (como o "Ver Projeto"), não iniciamos o arrasto 
+            // para permitir que o evento de clique (click) seja disparado corretamente no botão.
+            if (e.target.closest("button") || e.target.closest("a")) return;
+
             isDragging = true;
             dragStartX = e.clientX;
             startTranslate = gsap.getProperty(track, "x");
@@ -460,8 +494,8 @@
 
         function renderGallery(images) {
             thumbsWrap.innerHTML = "";
+            if (images.length) galleryImg.src = images[0];
             images.forEach((src, i) => {
-                galleryImg.src = images[0];
                 const thumb = document.createElement("button");
                 thumb.className = "modal__thumb" + (i === 0 ? " is-active" : "");
                 thumb.type = "button";
