@@ -6,18 +6,25 @@
 
 /* ---------- 1. Tokens ---------- */
 :root {
-    /* cores */
+    /* Referências de Cores */
+    --carmine-red: #a2142f;      /* Vermelho Carmim (fechado, forte) */
+    --carmine-red-dim: #5f0c1b;  /* Versão escurecida do Vermelho Carmim */
+    --frost-white: #f0f4f8;      /* Branco Geada (luminoso, puro com tom sutil frio) */
+    --pure-white: #ffffff;       /* Branco puro para realces e alto contraste */
+    --france-blue: #318ce7;      /* Azul França (Bleu de France - vivo e brilhante para detalhes) */
+
+    /* cores do sistema */
     --asphalt-950: #0e1012;
     --asphalt-900: #14161a;
     --asphalt-800: #1c1f23;
     --asphalt-700: #292d33;
     --concrete-500: #6b7078;
     --concrete-300: #a7abb2;
-    --paper-100: #edeeec;
-    --paper-050: #f7f7f5;
-    --racing-red: #d8262c;
-    --racing-red-dim: #7d1418;
-    --pit-yellow: #f4c11b;
+    --paper-100: var(--frost-white);
+    --paper-050: var(--pure-white);
+    --racing-red: var(--carmine-red);
+    --racing-red-dim: var(--carmine-red-dim);
+    --pit-yellow: var(--france-blue); /* mapeado para o azul frança como base de detalhes */
 
     /* tipografia */
     --font-display: "Rajdhani", "Arial Narrow", sans-serif;
@@ -96,7 +103,7 @@ ul {
 }
 
 :focus-visible {
-    outline: 2px solid var(--pit-yellow);
+    outline: 2px solid var(--france-blue);
     outline-offset: 3px;
 }
 
@@ -110,7 +117,7 @@ ul {
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--pit-yellow);
+    color: var(--france-blue);
 }
 
 .sr-only {
@@ -198,7 +205,7 @@ ul {
 
 .track-hud .track-path-progress {
     fill: none;
-    stroke: var(--pit-yellow);
+    stroke: var(--france-blue);
     stroke-width: 3;
     stroke-linecap: round;
     stroke-dasharray: 1;
@@ -312,18 +319,19 @@ ul {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--asphalt-950);
-    background: var(--pit-yellow);
+    color: var(--pure-white);
+    background: var(--carmine-red);
     padding: 0.55rem 1.1rem;
     border-radius: 999px;
     text-decoration: none;
-    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), background 0.25s var(--ease-out);
     white-space: nowrap;
 }
 
 .header__cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(244, 193, 27, 0.25);
+    background: #bf1838;
+    box-shadow: 0 10px 20px rgba(162, 20, 47, 0.25);
 }
 
 .header__toggle {
@@ -489,7 +497,7 @@ ul {
 .hero__scrollcue-line {
     width: 1px;
     height: 34px;
-    background: linear-gradient(180deg, var(--pit-yellow), transparent);
+    background: linear-gradient(180deg, var(--france-blue), transparent);
     animation: scrollcue 1.8s ease-in-out infinite;
 }
 
@@ -581,7 +589,7 @@ ul {
 }
 
 .about__dot.is-active {
-    background: var(--pit-yellow);
+    background: var(--france-blue);
     transform: scale(1.25);
 }
 
@@ -729,8 +737,8 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--racing-red);
-    color: var(--paper-050);
+    background: var(--carmine-red);
+    color: var(--pure-white);
     font-weight: 600;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -742,9 +750,9 @@ ul {
 }
 
 .btn-primary:hover {
-    background: #ef2d33;
+    background: #bf1838;
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(216, 38, 44, 0.3);
+    box-shadow: 0 12px 24px rgba(162, 20, 47, 0.3);
 }
 
 .configurator__controls {
@@ -790,7 +798,7 @@ ul {
 }
 
 .configurator__dash.is-active {
-    background: var(--pit-yellow);
+    background: var(--france-blue);
     width: 34px;
 }
 
@@ -853,8 +861,8 @@ ul {
     position: absolute;
     top: 14px;
     left: 14px;
-    background: var(--pit-yellow);
-    color: var(--asphalt-950);
+    background: var(--france-blue);
+    color: var(--pure-white);
     font-family: var(--font-mono);
     font-size: 0.66rem;
     letter-spacing: 0.06em;
@@ -878,7 +886,7 @@ ul {
 
 .ad-card__price {
     font-family: var(--font-mono);
-    color: var(--pit-yellow);
+    color: var(--carmine-red);
     font-size: 1rem;
     margin-top: 0.35rem;
 }
@@ -902,13 +910,13 @@ ul {
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--paper-100);
-    border-bottom: 1px solid var(--racing-red);
+    border-bottom: 1px solid var(--carmine-red);
     padding-bottom: 2px;
     transition: color 0.25s var(--ease-out);
 }
 
 .link-ghost:hover {
-    color: var(--pit-yellow);
+    color: var(--france-blue);
 }
 
 /* ---------- 5.6 Contatos ---------- */
@@ -963,8 +971,8 @@ ul {
 
 .contact__link:hover {
     transform: translateY(-3px);
-    border-color: var(--pit-yellow);
-    background: rgba(244, 193, 27, 0.08);
+    border-color: var(--france-blue);
+    background: rgba(49, 140, 231, 0.08);
 }
 
 /* ---------- 5.7 Footer ---------- */
@@ -1002,7 +1010,7 @@ ul {
     font-size: 0.68rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--pit-yellow);
+    color: var(--france-blue);
     margin-bottom: 0.9rem;
 }
 
@@ -1131,7 +1139,7 @@ ul {
 
 .modal__thumb.is-active {
     opacity: 1;
-    border-color: var(--pit-yellow);
+    border-color: var(--france-blue);
 }
 
 .modal__thumb img {
@@ -1213,7 +1221,7 @@ ul {
     font-size: 0.62rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--pit-yellow);
+    color: var(--france-blue);
     margin-bottom: 0.35rem;
 }
 
